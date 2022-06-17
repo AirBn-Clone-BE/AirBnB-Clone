@@ -1,4 +1,4 @@
-package com.sparta.detailpage.service;
+package com.sparta.airbnb_clone.service;
 
 import com.sparta.detailpage.Dto.CommentRequestDto;
 import com.sparta.detailpage.Model.Comment;
