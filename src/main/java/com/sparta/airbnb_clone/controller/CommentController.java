@@ -1,9 +1,9 @@
-package com.sparta.detailpage.Controller;
+package com.sparta.airbnb_clone.controller;
 
-import com.sparta.detailpage.Dto.CommentRequestDto;
-import com.sparta.detailpage.Model.Comment;
-import com.sparta.detailpage.Repository.CommentRepository;
-import com.sparta.detailpage.service.CommentService;
+import com.sparta.airbnb_clone.dto.CommentRequestDto;
+import com.sparta.airbnb_clone.model.Comment;
+import com.sparta.airbnb_clone.repository.CommentRepository;
+import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

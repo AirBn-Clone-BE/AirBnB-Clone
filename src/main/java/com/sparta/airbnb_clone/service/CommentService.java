@@ -1,8 +1,8 @@
 package com.sparta.airbnb_clone.service;
 
-import com.sparta.detailpage.Dto.CommentRequestDto;
-import com.sparta.detailpage.Model.Comment;
-import com.sparta.detailpage.Repository.CommentRepository;
+import com.sparta.airbnb_clone.dto.CommentRequestDto;
+import com.sparta.airbnb_clone.model.Comment;
+import com.sparta.airbnb_clone.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

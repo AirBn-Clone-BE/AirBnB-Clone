@@ -1,6 +1,6 @@
-package com.sparta.airbnb_clone.Repository;
+package com.sparta.airbnb_clone.repository;
 
-import com.sparta.detailpage.Model.Comment;
+import com.sparta.airbnb_clone.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
