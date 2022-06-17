@@ -25,12 +25,20 @@ public class CommentController {
             return comment;
         }
 
-        //
+        //댓글 조회
     @GetMapping("/api/comment/{houseId}")
     public List<Comment> getAllCommnet(@PathVariable Long houseId){
         return commentRepository.findAllByHouseId(houseId);
-
     }
+
+    //댓글 삭제(일단 기능만)
+    @DeleteMapping("/api/comment/{id}")
+    public Long deleteComment(@PathVariable Long id){
+
+        commentRepository.deleteById(id);
+        return id;
+    }
+
 
 
 
