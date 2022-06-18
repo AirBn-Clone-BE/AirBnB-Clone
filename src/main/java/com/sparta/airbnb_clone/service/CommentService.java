@@ -6,6 +6,9 @@ import com.sparta.airbnb_clone.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,4 +23,6 @@ public class CommentService {
         commentRepository.save(comment);
         return comment;
     }
+
+
 }

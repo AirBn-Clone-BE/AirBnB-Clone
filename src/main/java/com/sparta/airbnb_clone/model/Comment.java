@@ -25,6 +25,8 @@ public class Comment extends Timestamped {
     @Column(nullable = false)
     private String comment;
 
+
+
     public Comment(CommentRequestDto requestDto, Long houseId, String nickname){
         this.comment = requestDto.getComment();
         this.houseId = houseId;

@@ -20,7 +20,6 @@ public class CommentController {
     //댓글 등록
     @PostMapping("/api/comment/{houseId}")
     public Comment createComment(@RequestBody CommentRequestDto requestDto, @PathVariable Long houseId){
-
             Comment comment = commentService.createComment(requestDto, houseId);
             return comment;
         }
@@ -28,7 +27,8 @@ public class CommentController {
         //댓글 조회
     @GetMapping("/api/comment/{houseId}")
     public List<Comment> getAllCommnet(@PathVariable Long houseId){
-        return commentRepository.findAllByHouseId(houseId);
+        List<Comment> comments= commentRepository.findAllByHouseId(houseId);
+        return comments;
     }
 
     //댓글 삭제(일단 기능만)
