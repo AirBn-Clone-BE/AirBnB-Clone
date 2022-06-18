@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
 public abstract class Timestamped {   //추상으로 달아둘것! 상속이 되어야만 쓸수있게 해줘야함.
 
     @CreatedDate //생성시간
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy년 MM월")
     private LocalDateTime createdAt;
 
-    @LastModifiedDate //수정시간
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime modifiedAt;
+    //@LastModifiedDate //수정시간
+    // @JsonFormat(pattern = "yyyy-MM-dd")
+    // private LocalDateTime modifiedAt;
 }
