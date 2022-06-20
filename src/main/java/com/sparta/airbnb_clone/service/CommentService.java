@@ -15,9 +15,9 @@ public class CommentService {
     private final CommentRepository commentRepository;
 
     @Transactional
-    public Comment createComment(CommentRequestDto requestDto, Long houseId, String username) {
+    public Comment createComment(CommentRequestDto requestDto, Long houseId, String userId) {
 
-        Comment comment = new Comment(requestDto, houseId,username);
+        Comment comment = new Comment(requestDto, houseId,userId);
         commentRepository.save(comment);
         return comment;
     }

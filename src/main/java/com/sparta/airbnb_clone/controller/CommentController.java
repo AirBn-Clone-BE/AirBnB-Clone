@@ -6,12 +6,11 @@ import com.sparta.airbnb_clone.repository.CommentRepository;
 import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,9 +27,9 @@ public class CommentController {
 //            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //            User principal = (User) authentication.getPrincipal();
 //            String username = principal.getUsername();
-            String username = SecurityUtil.getCurrentUserId();
+            String userId = SecurityUtil.getCurrentUserId();
 
-            Comment comment = commentService.createComment(requestDto, houseId, username);
+            Comment comment = commentService.createComment(requestDto, houseId, userId);
             return comment;
         }
 
@@ -58,7 +57,12 @@ public class CommentController {
     //댓글 삭제(일단 기능만)
     @DeleteMapping("/api/comment/{id}")
     public Long deleteComment(@PathVariable Long id){
-
+        String username = SecurityUtil.getCurrentUserId(); //현제 유저 아이디
+        Optional<Comment> a = commentRepository.findById(id);
+        String username1 = a.get().getUserId();
+        if (!Objects.equals(username, username1)){
+            throw new NullPointerException("본인이 작성한 글만 삭제 가능합니다.");
+        }
         commentRepository.deleteById(id);
         return id;
     }

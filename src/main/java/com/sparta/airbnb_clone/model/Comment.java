@@ -22,7 +22,7 @@ public class Comment extends Timestamped {
     private Long houseId;
 
     @Column(nullable = false)
-    private String nickName;
+    private String userId;
 
     @Column(nullable = false)
     private String comment;
@@ -33,10 +33,10 @@ public class Comment extends Timestamped {
 //    @JoinColumn(name = "users_id")
 //    private Users users;
 
-    public Comment(CommentRequestDto requestDto, Long houseId, String nickName){
+    public Comment(CommentRequestDto requestDto, Long houseId, String userId){
         this.comment = requestDto.getComment();
         this.houseId = houseId;
-        this.nickName = nickName;
+        this.userId = userId;
     }
 
 }
