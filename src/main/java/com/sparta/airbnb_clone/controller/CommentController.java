@@ -3,6 +3,7 @@ package com.sparta.airbnb_clone.controller;
 import com.sparta.airbnb_clone.dto.CommentRequestDto;
 import com.sparta.airbnb_clone.model.Comment;
 import com.sparta.airbnb_clone.repository.CommentRepository;
+import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -24,9 +25,10 @@ public class CommentController {
     // 프론트에서 토큰 정보 보내줄 때 앞에 Bearer 붙이고(중요x99999) 한 칸 띄어서 accessToken 값 붙여서 보내줘야 details 정보 불러올 수 있음
     @PostMapping("/api/comment/{houseId}")
     public Comment createComment(@RequestBody CommentRequestDto requestDto, @PathVariable Long houseId){
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            User principal = (User) authentication.getPrincipal();
-            String username = principal.getUsername();
+//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//            User principal = (User) authentication.getPrincipal();
+//            String username = principal.getUsername();
+            String username = SecurityUtil.getCurrentUserId();
 
             Comment comment = commentService.createComment(requestDto, houseId, username);
             return comment;

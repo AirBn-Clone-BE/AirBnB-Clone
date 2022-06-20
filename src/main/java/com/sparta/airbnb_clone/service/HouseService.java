@@ -26,13 +26,13 @@ public class HouseService {
     @Transactional
     public House addHouse(HouseRequestDto requestDto, String username) {
 
-
-        //동일한 이름의 숙소가 있는지 확인 후, 존재하면 에러 날림
-        houseRepository.findByHouseName(requestDto.getHouseName()).ifPresent(
-                m -> {
-                    throw new CustomErrorException("이미 등록된 이름의 숙소입니다");
-                }
-        );
+//
+//        //동일한 이름의 숙소가 있는지 확인 후, 존재하면 에러 날림
+//        houseRepository.findByHouseName(requestDto.getHouseName()).ifPresent(
+//                m -> {
+//                    throw new CustomErrorException("이미 등록된 이름의 숙소입니다");
+//                }
+//        );
 
         House house = new House(requestDto, username);
         houseRepository.save(house);

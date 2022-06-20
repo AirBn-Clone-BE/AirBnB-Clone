@@ -2,8 +2,10 @@ package com.sparta.airbnb_clone.controller;
 
 import com.sparta.airbnb_clone.dto.HouseRequestDto;
 import com.sparta.airbnb_clone.model.House;
+import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.HouseService;
 import org.apache.catalina.User;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +23,7 @@ public class HouseController {
     //숙소 등록하기
     @PostMapping("/api/house")
     public House addHouse(@RequestBody HouseRequestDto houseRequestDto) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User principal = (User) authentication.getPrincipal();
-        String username = principal.getUsername();
+        String username = SecurityUtil.getCurrentUserId();
 ////        if(userDetails == null) {
 //            throw new CustomErrorException("로그인이 필요합니다.");
 //        }

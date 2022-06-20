@@ -17,7 +17,7 @@ public class HouseResponseDto {
 
 
 
-    public HouseResponseDto(Long id, String houseName, int price, String houseInfo, String address, String image, int personCnt) {
+    public HouseResponseDto(String houseName, int price, String houseInfo, String address, String image, int personCnt) {
 
         this.houseName = houseName;
         this.price = price;
