@@ -31,19 +31,15 @@ public class House {
     private String address;
 
     @Column(nullable = false)
-<<<<<<< HEAD
     private String nickName;
 
     @Column
-=======
->>>>>>> a4dadfb5b006dfc54276c82beb82358f53e6fd5a
     private String image;
 
     @Column(nullable = false)
     private int personCnt;
 
     //호스트 (숙소 등록한 사람)
-<<<<<<< HEAD
    // @ManyToOne(fetch = FetchType.LAZY)
   //  @JoinColumn(name = "USER_ID", nullable = false)
   //  private Users nickName;
@@ -58,30 +54,15 @@ public class House {
         this.image = requestDto.getImage();
         this.nickName = nickName;
         this.personCnt = requestDto.getPersonCnt();
-=======
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", nullable = false)
-    private User user;
-
-
-    //숙소 저장용 생성자
-    public House(String houseName, String houseInfo, int price, String address, String image, User user, int personCnt) {
-        this.houseName = houseName;
-        this.houseInfo = houseInfo;
-        this.price = price;
-        this.address = address;
-        this.image = image;
-        this.user = user;
-        this.personCnt = personCnt;
->>>>>>> a4dadfb5b006dfc54276c82beb82358f53e6fd5a
     }
 
-    public void updateHouse(HouseRequestDto requestDto){
-        this.houseName = requestDto.getHouseName();
-        this.houseInfo = requestDto.getHouseInfo();
-        this.price = requestDto.getPrice();
-        this.address = requestDto.getAddress();
-        this.image = requestDto.getImage();
-        this.personCnt = requestDto.getPersonCnt();
-    }
+
+//    public void updateHouse(HouseRequestDto requestDto){
+//        this.houseName = requestDto.getHouseName();
+//        this.houseInfo = requestDto.getHouseInfo();
+//        this.price = requestDto.getPrice();
+//        this.address = requestDto.getAddress();
+//        this.image = requestDto.getImage();
+//        this.personCnt = requestDto.getPersonCnt();
+//    }
 }

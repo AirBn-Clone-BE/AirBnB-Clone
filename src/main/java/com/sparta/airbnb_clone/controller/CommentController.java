@@ -1,19 +1,13 @@
 package com.sparta.airbnb_clone.controller;
 
 import com.sparta.airbnb_clone.dto.CommentRequestDto;
-import com.sparta.airbnb_clone.dto.TokenRequestDto;
 import com.sparta.airbnb_clone.model.Comment;
-import com.sparta.airbnb_clone.model.Users;
 import com.sparta.airbnb_clone.repository.CommentRepository;
-import com.sparta.airbnb_clone.security.SecurityUtil;
-import com.sparta.airbnb_clone.security.UserDetailsImpl;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
