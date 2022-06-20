@@ -34,7 +34,7 @@ public class UserController {
     public ResponseEntity<TokenDto> login(@RequestBody UsersRequestDto requestDto) {
         return ResponseEntity.ok(userService.login(requestDto));
     }
-
+    //30분 유효기간 토큰을 새로 생성?
     @PostMapping("/reissue")
     public ResponseEntity<TokenDto> reissue(@RequestBody TokenRequestDto tokenRequestDto) {
         return ResponseEntity.ok(userService.reissue(tokenRequestDto));

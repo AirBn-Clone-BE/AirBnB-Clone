@@ -32,10 +32,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-    @Bean
-    public BCryptPasswordEncoder encodePassword() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public BCryptPasswordEncoder encodePassword() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 
     @Override
@@ -75,6 +75,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .mvcMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Preflight Request 허용해주기
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                .antMatchers("/signup/**").permitAll()
+                .antMatchers("/login/**").permitAll()
+                .antMatchers("/reissue/**").permitAll()
                 .antMatchers("/auth/**", "/oauth2/**").permitAll()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/api/**").permitAll()

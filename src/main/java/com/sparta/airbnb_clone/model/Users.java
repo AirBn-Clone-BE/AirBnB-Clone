@@ -1,5 +1,6 @@
 package com.sparta.airbnb_clone.model;
 
+import com.sparta.airbnb_clone.util.Timestamped;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,11 +25,11 @@ public class Users extends Timestamped {
     private String password;
 
     @Column(nullable = false)
-//    @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
-//    @Column
-//    private String provider;
+    @Column
+    private String provider;
 
 
     public Users(String userId, String nickName, String password, UserRoleEnum role) {

@@ -86,6 +86,13 @@ public class UserService {
         // 3. 인증 정보를 기반으로 JWT 토큰 생성
         TokenDto tokenDto = tokenProvider.generateTokenDto(authentication);
 
+        tokenDto.setUserId(requestDto.getUserId());
+
+        Users user = userRepository.findByUserId(requestDto.getUserId()).orElse(null);
+        assert user != null;
+        tokenDto.setNickName(user.getNickName());
+
+
         // 4. RefreshToken 저장
         RefreshToken refreshToken = RefreshToken.builder()
                 .key(authentication.getName())
