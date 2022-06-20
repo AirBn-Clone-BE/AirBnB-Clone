@@ -1,10 +1,19 @@
 package com.sparta.airbnb_clone.controller;
 
 import com.sparta.airbnb_clone.dto.CommentRequestDto;
+import com.sparta.airbnb_clone.dto.TokenRequestDto;
 import com.sparta.airbnb_clone.model.Comment;
+import com.sparta.airbnb_clone.model.Users;
 import com.sparta.airbnb_clone.repository.CommentRepository;
+import com.sparta.airbnb_clone.security.SecurityUtil;
+import com.sparta.airbnb_clone.security.UserDetailsImpl;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +27,14 @@ public class CommentController {
 
 
     //댓글 등록
+    // 프론트에서 토큰 정보 보내줄 때 앞에 Bearer 붙이고(중요x99999) 한 칸 띄어서 accessToken 값 붙여서 보내줘야 details 정보 불러올 수 있음
     @PostMapping("/api/comment/{houseId}")
     public Comment createComment(@RequestBody CommentRequestDto requestDto, @PathVariable Long houseId){
-            Comment comment = commentService.createComment(requestDto, houseId);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User principal = (User) authentication.getPrincipal();
+            String username = principal.getUsername();
+
+            Comment comment = commentService.createComment(requestDto, houseId, username);
             return comment;
         }
 

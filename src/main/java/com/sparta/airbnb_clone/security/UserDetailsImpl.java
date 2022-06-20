@@ -23,7 +23,9 @@ public class UserDetailsImpl implements UserDetails {
 
     //OAuth 로그인
 
-
+    public Users getUser() {
+        return user;
+    }
     @Override
     public String getPassword() {
         return user.getPassword();
@@ -33,6 +35,8 @@ public class UserDetailsImpl implements UserDetails {
     public String getUsername() {
         return user.getUserId();
     }
+
+    public String getNickName() { return user.getNickName();}
 
     @Override
     public boolean isAccountNonExpired() {

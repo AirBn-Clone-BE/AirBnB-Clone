@@ -1,9 +1,11 @@
 package com.sparta.airbnb_clone.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sparta.airbnb_clone.dto.CommentRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
 
@@ -26,12 +28,15 @@ public class Comment extends Timestamped {
     private String comment;
 
 
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "users_id")
+//    private Users users;
 
-
-    public Comment(CommentRequestDto requestDto, Long houseId, String nickname){
+    public Comment(CommentRequestDto requestDto, Long houseId, String nickName){
         this.comment = requestDto.getComment();
         this.houseId = houseId;
-        this.nickName = nickname;
+        this.nickName = nickName;
     }
 
 }

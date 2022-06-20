@@ -14,10 +14,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
 
-    private final UserRepository memberRepository;
+//    private final UserRepository memberRepository;
 
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        Users user = memberRepository.findByUserId(userId).orElseThrow(
+        Users user = userRepository.findByUserId(userId).orElseThrow(
                 () -> new UsernameNotFoundException(userId + "이 존재하지 않습니다")
         );
         return new UserDetailsImpl(user);
