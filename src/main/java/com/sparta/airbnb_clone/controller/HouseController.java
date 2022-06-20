@@ -2,10 +2,12 @@ package com.sparta.airbnb_clone.controller;
 
 import com.sparta.airbnb_clone.exception.CustomErrorException;
 import com.sparta.airbnb_clone.model.House;
-import com.sparta.airbnb_clone.model.dto.HouseRequestDto;
-import com.sparta.airbnb_clone.model.dto.HouseResponseDto;
-import com.sparta.airbnb_clone.model.dto.ResponseDto;
+import com.sparta.airbnb_clone.dto.HouseRequestDto;
+import com.sparta.airbnb_clone.dto.HouseResponseDto;
+import com.sparta.airbnb_clone.dto.ResponseDto;
+import com.sparta.airbnb_clone.security.UserDetailsImpl;
 import com.sparta.airbnb_clone.service.HouseService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,7 +24,7 @@ public class HouseController {
 
     //상세보기
     @PostMapping("/api/details")
-    public ResponseDto readHouse(@RequestBody HashMap<String, Long> map){
+    public ResponseDto readHouse(@RequestBody HashMap<String, Long> map, @AuthenticationPrincipal UserDetailsImpl userDetails){
         Long id = map.get("id");
         HouseResponseDto houseResponseDto = houseService.readHouse(id);
         return new ResponseDto("success", "상세보기에 성공했습니다.", houseResponseDto);

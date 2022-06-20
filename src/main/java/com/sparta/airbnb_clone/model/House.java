@@ -39,17 +39,17 @@ public class House {
     //호스트 (숙소 등록한 사람)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
-    private User user;
+    private Users nickName;
 
 
     //숙소 저장용 생성자
-    public House(String houseName, String houseInfo, int price, String address, String image, User user, int personCnt) {
+    public House(String houseName, String houseInfo, int price, String address, String image, Users nickName, int personCnt) {
         this.houseName = houseName;
         this.houseInfo = houseInfo;
         this.price = price;
         this.address = address;
         this.image = image;
-        this.user = user;
+        this.nickName = nickName;
         this.personCnt = personCnt;
     }
 

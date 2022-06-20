@@ -1,5 +1,6 @@
 package com.sparta.airbnb_clone.dto;
 
+import com.sparta.airbnb_clone.model.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ public class HouseRequestDto {
     private int price;
     private String houseInfo;
     private String address;
+    private Users nickName;
     private String image;
     private int personCnt;
 }

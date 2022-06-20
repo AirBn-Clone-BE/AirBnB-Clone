@@ -4,9 +4,10 @@ import com.sparta.airbnb_clone.dto.HouseRequestDto;
 import com.sparta.airbnb_clone.dto.HouseResponseDto;
 import com.sparta.airbnb_clone.exception.CustomErrorException;
 import com.sparta.airbnb_clone.model.House;
-import com.sparta.airbnb_clone.model.User;
+import com.sparta.airbnb_clone.model.Users;
 import com.sparta.airbnb_clone.repository.HouseRepository;
 import com.sparta.airbnb_clone.repository.UserRepository;
+import com.sparta.airbnb_clone.security.UserDetailsImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,9 +33,10 @@ public class HouseService {
                 house.getId(),
                 house.getHouseName(),
                 house.getPrice(),
+                house.getHouseInfo(),
                 house.getAddress(),
+                house.getNickName(),
                 house.getImage(),
-                house.getUser(),
                 house.getPersonCnt()
         );
         return houseResponseDto;
@@ -43,15 +45,15 @@ public class HouseService {
     //숙소 등록하기
     @Transactional
     public House addHouse(HouseRequestDto requestDto, UserDetailsImpl userDetails) {
-        Long id = userDetails.getUser().getId();
+        String id = userDetails.getUsername();
 
-        User user = userRepository.findById(id).orElseThrow(
+        Users userId = userRepository.findByUserId(id).orElseThrow(
                 () -> new CustomErrorException("존재하지 않는 사용자 입니다.")
         );
 
 
-        House house = new house(requestDto.getHouseName(), requestDto.getHouseInfo(), requestDto.getPrice(),
-                requestDto.getAddress(), requestDto.getImage(), user);
+        House house = new House(requestDto.getHouseName(), requestDto.getHouseInfo(), requestDto.getPrice(),
+                requestDto.getAddress(), requestDto.getImage(), requestDto.getNickName(), requestDto.getPersonCnt());
 
         //db에 숙소 저장
         houseRepository.save(house);

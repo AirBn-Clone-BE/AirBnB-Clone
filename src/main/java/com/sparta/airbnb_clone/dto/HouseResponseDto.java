@@ -1,7 +1,7 @@
 package com.sparta.airbnb_clone.dto;
 
 
-import com.sparta.airbnb_clone.model.User;
+import com.sparta.airbnb_clone.model.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,14 +20,15 @@ public class HouseResponseDto {
     private int personCnt;
 
 
-    private User user;
+    private Users nickName;
 
-    public HouseResponseDto(Long id, String houseName, int price, String houseInfo, String address, String image, int personCnt) {
+    public HouseResponseDto(Long id, String houseName, int price, String houseInfo, String address, Users nickName, String image, int personCnt) {
         this.id = id;
         this.houseName = houseName;
         this.price = price;
         this.houseInfo = houseInfo;
         this.address = address;
+        this.nickName = nickName;
         this.image = image;
         this.personCnt = personCnt;
     }
