@@ -1,11 +1,19 @@
 package com.sparta.airbnb_clone.model;
 
+<<<<<<< HEAD
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+=======
+import com.sparta.airbnb_clone.util.Timestamped;
+import lombok.*;
+
+import javax.persistence.*;
+
+>>>>>>> a4dadfb5b006dfc54276c82beb82358f53e6fd5a
 
 @Getter
 @NoArgsConstructor

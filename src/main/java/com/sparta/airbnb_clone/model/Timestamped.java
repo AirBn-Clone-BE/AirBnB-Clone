@@ -3,6 +3,10 @@ package com.sparta.airbnb_clone.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
+<<<<<<< HEAD
+=======
+import org.springframework.data.annotation.LastModifiedDate;
+>>>>>>> a4dadfb5b006dfc54276c82beb82358f53e6fd5a
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;

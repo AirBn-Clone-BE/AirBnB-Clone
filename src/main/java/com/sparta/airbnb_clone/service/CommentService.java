@@ -6,6 +6,12 @@ import com.sparta.airbnb_clone.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
+>>>>>>> a4dadfb5b006dfc54276c82beb82358f53e6fd5a
 
 @Service
 @RequiredArgsConstructor
