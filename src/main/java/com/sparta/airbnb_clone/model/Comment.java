@@ -27,11 +27,11 @@ public class Comment extends Timestamped {
 
 
 
+
     public Comment(CommentRequestDto requestDto, Long houseId, String nickname){
         this.comment = requestDto.getComment();
         this.houseId = houseId;
         this.nickName = nickname;
     }
-
 
 }

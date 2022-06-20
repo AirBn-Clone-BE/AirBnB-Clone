@@ -31,6 +31,20 @@ public class CommentController {
         return comments;
     }
 
+
+    //@GetMapping("/api/commentButton/{userId}")//삭제 버튼
+    //public boolean getButton(@PathVariable Long userId){
+     //boolean button= true;
+    //int id = 1;// 현제 로그인한 유저의 pk
+    //if(id!=userId){// 현제 로그인한 유저의 pk != 댓글을 생성할때 저장시킨 아이디
+    //button = false;
+    //}else{
+    //button =true;
+    //}
+    //return button;
+    //}
+
+
     //댓글 삭제(일단 기능만)
     @DeleteMapping("/api/comment/{id}")
     public Long deleteComment(@PathVariable Long id){
@@ -38,6 +52,8 @@ public class CommentController {
         commentRepository.deleteById(id);
         return id;
     }
+
+
 
 
 
