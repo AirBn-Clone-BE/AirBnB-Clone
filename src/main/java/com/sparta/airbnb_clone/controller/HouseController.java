@@ -1,6 +1,7 @@
 package com.sparta.airbnb_clone.controller;
 
 import com.sparta.airbnb_clone.dto.HouseRequestDto;
+import com.sparta.airbnb_clone.dto.HouseResponseDto;
 import com.sparta.airbnb_clone.dto.MyDto;
 import com.sparta.airbnb_clone.dto.ResponseDto;
 import com.sparta.airbnb_clone.exception.CustomErrorException;
@@ -56,19 +57,61 @@ public class HouseController {
     //숙소 수정하기
 
     @PutMapping("/api/house/{id}")
-    public Long putHouse(@RequestBody HouseRequestDto requestDto, @PathVariable Long id) {
-        houseService.putHouse(requestDto, id);
-        return id;
+    public ResponseEntity<MyDto> putHouse(@RequestBody HouseRequestDto requestDto, @PathVariable Long id) {
+
+        MyDto dto = new MyDto();
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        String username = SecurityUtil.getCurrentUserId(); //현제 유저 닉네임
+        Optional<House> a = houseRepository.findById(id);
+        String username1 = a.get().getNickName();
+
+        if (Objects.equals(username, username1)) {   //댓글의 닉네임와 일치한다면
+
+            houseService.putHouse(requestDto,id);
+
+            dto.setStatus(StatusEnum.OK);
+            dto.setData(id);
+            dto.setMessage("숙소 수정!");
+            return new ResponseEntity<>(dto, header, HttpStatus.OK);
+        }else{
+            dto.setStatus(StatusEnum.BAD_REQUEST);
+            dto.setData(id);
+            dto.setMessage("사용자의 숙소가 아닙니다!");
+            return new ResponseEntity<>(dto,header, HttpStatus.BAD_REQUEST);
+        }
+
+
+
+
+
     }
 
 
     //숙소 삭제하기
     @DeleteMapping("/api/house/{id}")
-    public Long deleteHouse(@PathVariable Long id) {
+    public ResponseEntity<MyDto> deleteHouse(@PathVariable Long id) {
 
-        houseRepository.deleteById(id);
-        return id;
+        MyDto dto = new MyDto();
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
+        String username = SecurityUtil.getCurrentUserId(); //현제 유저 닉네임
+        Optional<House> a = houseRepository.findById(id);
+        String username1 = a.get().getNickName();
+        if (Objects.equals(username, username1)) {   //댓글의 닉네임와 일치한다면
+            houseRepository.deleteById(id);
+            dto.setStatus(StatusEnum.OK);
+            dto.setData(id);
+            dto.setMessage("숙소 삭제!");
+            return new ResponseEntity<>(dto, header, HttpStatus.OK);
+        }else{
+            dto.setStatus(StatusEnum.BAD_REQUEST);
+            dto.setData(id);
+            dto.setMessage("사용자의 숙소가 아닙니다!");
+            return new ResponseEntity<>(dto,header, HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

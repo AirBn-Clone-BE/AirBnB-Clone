@@ -20,7 +20,14 @@ public class HouseResponseDto {
 
 
 
-    public HouseResponseDto(String houseName, int price, String houseInfo, String address, String image, int personCnt) {
+    public HouseResponseDto(String houseName,
+                            int price,
+                            String houseInfo,
+                            String address,
+                            String image,
+                            int personCnt,
+                            boolean wifi,
+                            boolean parking) {
 
         this.houseName = houseName;
         this.price = price;
@@ -28,5 +35,7 @@ public class HouseResponseDto {
         this.address = address;
         this.image = image;
         this.personCnt = personCnt;
+        this.wifi = wifi;
+        this.parking = parking;
     }
 }

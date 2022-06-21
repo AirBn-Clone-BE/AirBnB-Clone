@@ -53,6 +53,8 @@ public class HouseService {
     public void putHouse(HouseRequestDto requestDto, Long id) {
         House house = houseRepository.findById(id).orElseThrow(
                 ()-> new NullPointerException("게시글이 존재하지 않습니다."));
+
+
         house.updateHouse(requestDto);
 
     }
