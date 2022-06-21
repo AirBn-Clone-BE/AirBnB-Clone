@@ -1,8 +1,10 @@
 package com.sparta.airbnb_clone.controller;
 
-import com.sparta.airbnb_clone.dto.*;
+import com.sparta.airbnb_clone.dto.MyDto;
+import com.sparta.airbnb_clone.dto.TokenDto;
+import com.sparta.airbnb_clone.dto.TokenRequestDto;
+import com.sparta.airbnb_clone.dto.UsersRequestDto;
 import com.sparta.airbnb_clone.exception.StatusEnum;
-import com.sparta.airbnb_clone.model.Users;
 import com.sparta.airbnb_clone.repository.UserRepository;
 import com.sparta.airbnb_clone.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 @RequiredArgsConstructor
 @RestController
@@ -56,8 +57,17 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody UsersRequestDto requestDto) {
+        TokenDto dto = new TokenDto();
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        if (userRepository.existsByUserId(requestDto))
+
+
         return ResponseEntity.ok(userService.login(requestDto));
     }
+
+
     //30분 유효기간 토큰을 새로 생성?
     @PostMapping("/reissue")
     public ResponseEntity<TokenDto> reissue(@RequestBody TokenRequestDto tokenRequestDto) {
