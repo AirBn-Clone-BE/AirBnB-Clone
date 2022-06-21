@@ -7,13 +7,16 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class HouseResponseDto {
+    private String address;
     private String houseName;
+    private String image;
     private int price;
     private String houseInfo;
-    private String address;
-    private String image;
-
     private int personCnt;
+
+    private boolean wifi;
+
+    private boolean parking;
 
 
 
