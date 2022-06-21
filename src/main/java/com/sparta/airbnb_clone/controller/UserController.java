@@ -61,7 +61,7 @@ public class UserController {
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-        if (userRepository.existsByUserId(requestDto))
+//        if (userRepository.existsByUserId(requestDto))
 
 
         return ResponseEntity.ok(userService.login(requestDto));
