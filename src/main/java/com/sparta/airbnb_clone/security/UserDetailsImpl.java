@@ -31,10 +31,8 @@ public class UserDetailsImpl implements UserDetails {
         return user.getPassword();
     }
 
-    @Override
-    public String getUsername() {
-        return user.getUserId();
-    }
+    @Override //숙소 등록 및 댓글작성 시 SecurityUtil.getCurrentUserId();으로 nickName 값 꺼내오기 위해 변경
+    public String getUsername() {return user.getNickName();}
 
     public String getNickName() { return user.getNickName();}
 

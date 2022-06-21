@@ -24,7 +24,7 @@ public class HouseService {
 
     //숙소 등록하기
     @Transactional
-    public House addHouse(HouseRequestDto requestDto, String username) {
+    public House addHouse(HouseRequestDto requestDto, String nickName) {
 
 //
 //        //동일한 이름의 숙소가 있는지 확인 후, 존재하면 에러 날림
@@ -34,7 +34,7 @@ public class HouseService {
 //                }
 //        );
 
-        House house = new House(requestDto, username);
+        House house = new House(requestDto, nickName);
         houseRepository.save(house);
         return house;
     }

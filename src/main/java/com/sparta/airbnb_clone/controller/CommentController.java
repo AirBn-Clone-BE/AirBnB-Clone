@@ -25,12 +25,12 @@ public class CommentController {
     // 프론트에서 토큰 정보 보내줄 때 앞에 Bearer 붙이고(중요x99999) 한 칸 띄어서 accessToken 값 붙여서 보내줘야 details 정보 불러올 수 있음
     @PostMapping("/api/comment/{houseId}")
     public Comment createComment(@RequestBody CommentRequestDto requestDto, @PathVariable Long houseId){
-//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//            User principal = (User) authentication.getPrincipal();
-//            String username = principal.getUsername();
-            String username = SecurityUtil.getCurrentUserId();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            User principal = (User) authentication.getPrincipal();
+            String nickName = principal.getUsername();
+//            String username = SecurityUtil.getCurrentUserId();
 
-            Comment comment = commentService.createComment(requestDto, houseId, username);
+            Comment comment = commentService.createComment(requestDto, houseId, nickName);
             return comment;
         }
 

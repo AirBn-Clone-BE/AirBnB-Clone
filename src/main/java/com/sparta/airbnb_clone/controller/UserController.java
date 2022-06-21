@@ -24,13 +24,6 @@ public class UserController {
 
     private final UserRepository userRepository;
 
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
-
-//    @PostMapping("/signup")
-//    public UsersResponseDto signupP(@RequestBody UsersRequestDto requestDto) {return userService.signupP(requestDto);}
-
 
 
     @PostMapping("/signup")
