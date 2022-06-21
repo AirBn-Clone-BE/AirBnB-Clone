@@ -12,6 +12,8 @@ public interface HouseRepository extends JpaRepository<House, Long> {
 
     Optional<House> findById(Long id);
 
+    List<House> findAllById (Long id);
+
     Optional<House> findByHouseName(String houseName);
 
 

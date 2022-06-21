@@ -4,7 +4,9 @@ import com.sparta.airbnb_clone.dto.CommentRequestDto;
 import com.sparta.airbnb_clone.dto.MyDto;
 import com.sparta.airbnb_clone.exception.StatusEnum;
 import com.sparta.airbnb_clone.model.Comment;
+import com.sparta.airbnb_clone.model.House;
 import com.sparta.airbnb_clone.repository.CommentRepository;
+import com.sparta.airbnb_clone.repository.HouseRepository;
 import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,18 @@ public class CommentController {
 
     private final CommentService commentService;
     private final CommentRepository commentRepository;
+
+    private final HouseRepository houseRepository;
+
+
+    //숙소 상세 불러오기
+    @GetMapping("/api/detail/{id}")
+    public List<House> getAllHouse(@PathVariable Long id){
+        List<House> house= houseRepository.findAllById(id);
+        return house;
+    }
+
+
 
 
     //댓글 등록
