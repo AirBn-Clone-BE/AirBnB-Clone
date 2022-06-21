@@ -26,14 +26,6 @@ public class HouseService {
     @Transactional
     public House addHouse(HouseRequestDto requestDto, String nickName) {
 
-//
-//        //동일한 이름의 숙소가 있는지 확인 후, 존재하면 에러 날림
-//        houseRepository.findByHouseName(requestDto.getHouseName()).ifPresent(
-//                m -> {
-//                    throw new CustomErrorException("이미 등록된 이름의 숙소입니다");
-//                }
-//        );
-
         House house = new House(requestDto, nickName);
         houseRepository.save(house);
         return house;
@@ -56,17 +48,14 @@ public class HouseService {
 //        return houseResponseDto;
 //    }
 
-//    //숙소 수정하기
-//    @Transactional
-//    public void putHouse(HouseRequestDto requestDto) {
-//        Long id = requestDto.getId();
-//        System.out.println("수정 id = " + id);
-//        House house = houseRepository.findById(id).orElseThrow(
-//                ()-> new CustomErrorException("해당 숙소가 없습니다")
-//        );
-//        System.out.println("house 수정 = " + house);
-//        house.updateHouse(requestDto);
-//    }
+    //숙소 수정하기
+    @Transactional
+    public void putHouse(HouseRequestDto requestDto, Long id) {
+        House house = houseRepository.findById(id).orElseThrow(
+                ()-> new NullPointerException("게시글이 존재하지 않습니다."));
+        house.updateHouse(requestDto);
+
+    }
 
 //    //숙소 삭제하기
 //    public void deleteHouse(Long id) {
