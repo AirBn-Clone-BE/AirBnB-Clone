@@ -4,9 +4,10 @@ import com.sparta.airbnb_clone.util.Timestamped;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-
+@Setter
 @Getter
 @NoArgsConstructor
 @Entity

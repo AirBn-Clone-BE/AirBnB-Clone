@@ -28,11 +28,6 @@ public class Comment extends Timestamped {
     private String comment;
 
 
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(name = "users_id")
-//    private Users users;
-
     public Comment(CommentRequestDto requestDto, Long houseId, String nickName){
         this.comment = requestDto.getComment();
         this.houseId = houseId;

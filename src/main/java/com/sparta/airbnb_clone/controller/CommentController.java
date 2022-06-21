@@ -6,6 +6,7 @@ import com.sparta.airbnb_clone.repository.CommentRepository;
 import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class CommentController {
             String userId = SecurityUtil.getCurrentUserId();
 
             Comment comment = commentService.createComment(requestDto, houseId, userId);
+
             return comment;
         }
 

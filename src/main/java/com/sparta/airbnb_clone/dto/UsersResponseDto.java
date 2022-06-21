@@ -15,6 +15,8 @@ public class UsersResponseDto {
     private String userId;
 
 
+
+
     public static UsersResponseDto of(Users user) {
         return new UsersResponseDto(user.getUserId());
     }

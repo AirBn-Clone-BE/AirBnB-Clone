@@ -4,11 +4,9 @@ import com.sparta.airbnb_clone.dto.HouseRequestDto;
 import com.sparta.airbnb_clone.model.House;
 import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.HouseService;
-import org.apache.catalina.User;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HouseController {
@@ -23,12 +21,10 @@ public class HouseController {
     //숙소 등록하기
     @PostMapping("/api/house")
     public House addHouse(@RequestBody HouseRequestDto houseRequestDto) {
-        String username = SecurityUtil.getCurrentUserId();
-////        if(userDetails == null) {
-//            throw new CustomErrorException("로그인이 필요합니다.");
-//        }
+        String nickName = SecurityUtil.getCurrentUserId();
+
         //숙소 등록하기 로직
-        House house = houseService.addHouse(houseRequestDto, username);
+        House house = houseService.addHouse(houseRequestDto, nickName);
         return house;
     }
 
