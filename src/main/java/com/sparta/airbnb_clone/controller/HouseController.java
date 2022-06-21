@@ -46,6 +46,8 @@ public class HouseController {
         return house;
     }
 
+
+
     //숙소 상세 모두 불러오기
     @GetMapping("/api/allhouse")
     public List<House> getAllHouse(){
