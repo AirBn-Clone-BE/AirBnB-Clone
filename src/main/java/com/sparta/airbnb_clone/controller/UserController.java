@@ -39,6 +39,11 @@ public class UserController {
             dto.setData("");
             dto.setMessage("이미 가입되어 있는 userId가 존재합니다.");
             return new ResponseEntity<>(dto,header, HttpStatus.BAD_REQUEST);
+        }  else if (userRepository.existsByNickName(requestDto.getNickName())){
+            dto.setStatus(StatusEnum.BAD_REQUEST);
+            dto.setData("");
+            dto.setMessage("이미 가입되어 있는 nickName이 존재합니다.");
+            return new ResponseEntity<>(dto,header, HttpStatus.BAD_REQUEST);
         } else {
             userService.signup(requestDto);
             dto.setStatus(StatusEnum.OK);
