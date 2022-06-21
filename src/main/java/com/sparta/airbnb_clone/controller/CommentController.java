@@ -54,12 +54,12 @@ public class CommentController {
     //}
 
 
-    //댓글 삭제(일단 기능만)
+    //댓글 삭제
     @DeleteMapping("/api/comment/{id}")
     public Long deleteComment(@PathVariable Long id){
         String username = SecurityUtil.getCurrentUserId(); //현제 유저 아이디
         Optional<Comment> a = commentRepository.findById(id);
-        String username1 = a.get().getUserId();
+        String username1 = a.get().getNickName();
         if (!Objects.equals(username, username1)){
             throw new NullPointerException("본인이 작성한 글만 삭제 가능합니다.");
         }
