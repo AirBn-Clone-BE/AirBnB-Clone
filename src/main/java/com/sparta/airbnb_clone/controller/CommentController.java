@@ -3,6 +3,7 @@ package com.sparta.airbnb_clone.controller;
 import com.sparta.airbnb_clone.dto.CommentRequestDto;
 import com.sparta.airbnb_clone.model.Comment;
 import com.sparta.airbnb_clone.repository.CommentRepository;
+import com.sparta.airbnb_clone.security.SecurityUtil;
 import com.sparta.airbnb_clone.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -26,9 +27,10 @@ public class CommentController {
     public Comment createComment(@RequestBody CommentRequestDto requestDto, @PathVariable Long houseId){
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             User principal = (User) authentication.getPrincipal();
-            String username = principal.getUsername();
+            String nickName = principal.getUsername();
+//            String username = SecurityUtil.getCurrentUserId();
 
-            Comment comment = commentService.createComment(requestDto, houseId, username);
+            Comment comment = commentService.createComment(requestDto, houseId, nickName);
             return comment;
         }
 

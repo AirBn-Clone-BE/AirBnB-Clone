@@ -24,17 +24,17 @@ public class HouseService {
 
     //숙소 등록하기
     @Transactional
-    public House addHouse(HouseRequestDto requestDto, String username) {
+    public House addHouse(HouseRequestDto requestDto, String nickName) {
 
+//
+//        //동일한 이름의 숙소가 있는지 확인 후, 존재하면 에러 날림
+//        houseRepository.findByHouseName(requestDto.getHouseName()).ifPresent(
+//                m -> {
+//                    throw new CustomErrorException("이미 등록된 이름의 숙소입니다");
+//                }
+//        );
 
-        //동일한 이름의 숙소가 있는지 확인 후, 존재하면 에러 날림
-        houseRepository.findByHouseName(requestDto.getHouseName()).ifPresent(
-                m -> {
-                    throw new CustomErrorException("이미 등록된 이름의 숙소입니다");
-                }
-        );
-
-        House house = new House(requestDto, username);
+        House house = new House(requestDto, nickName);
         houseRepository.save(house);
         return house;
     }

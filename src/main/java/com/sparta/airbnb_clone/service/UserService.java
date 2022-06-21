@@ -34,46 +34,18 @@ public class UserService {
     private final RefreshTokenRepository refreshTokenRepository;
 
 
-//    public SignupResponseDto signupP (SignupRequestDto requestDto) {
-//        Boolean ok = true;
-//        String message = "회원가입 완료.";
-//
-//        String userId = requestDto.getUserId();
-//        String userNickname = requestDto.getNickName();
-//        UserRoleEnum userRole = UserRoleEnum.USER;
-//
-//        Optional<Users> foundId = userRepository.findByUserId(userId);
-//
-//
-//        /*비밀번호 복호화*/
-//        /*사용자가 입력한 비밀번호 requestDto.getPassword() 가 passwordEncoder.encode 에 의해 암호화됨.*/
-//        String password = passwordEncoder.encode(requestDto.getPassword());
-//
-//        Users user = new Users(userId,userNickname,password,userRole);
-//
-//        /*userId 중복검사*/
-//        if (foundId.isPresent()){
-//            ok = false;
-//            message = "이미 사용중인 아이디 입니다.";
-//            return new SignupResponseDto(ok,message);
-//        }
-//        userRepository.save(user);
-//        SignupResponseDto responeseDto =new SignupResponseDto(ok,message);
-//
-//        return responeseDto;
-//
-//    }
-
+    /*회원가입*/
     @Transactional
-    public UsersResponseDto signup(UsersRequestDto requestDto) {
+    public Users signup(UsersRequestDto requestDto) {
         if (userRepository.existsByUserId(requestDto.getUserId())) {
             throw new RuntimeException("이미 가입되어 있는 유저입니다");
         }
 
         Users user = requestDto.toUser(passwordEncoder);
-        return UsersResponseDto.of(userRepository.save(user));
+        return userRepository.save(user);
     }
 
+    /*로그인*/
     @Transactional
     public TokenDto login(UsersRequestDto requestDto) {
         // 1. Login ID/PW 를 기반으로 AuthenticationToken 생성
@@ -105,6 +77,7 @@ public class UserService {
         return tokenDto;
     }
 
+    /*토큰재발급*/
     @Transactional
     public TokenDto reissue(TokenRequestDto tokenRequestDto) {
         // 1. Refresh Token 검증
