@@ -56,7 +56,7 @@ public class House {
         this.nickName = nickName;
         this.personCnt = requestDto.getPersonCnt();
         this.wifi  = requestDto.isWifi();
-        this.parking = isParking();
+        this.parking = requestDto.isParking();
     }
 
 
