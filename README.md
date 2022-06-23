@@ -33,12 +33,11 @@ BackEnd
 
 ## 시연 영상 및 접속 링크
 
-<b> 시연 영상 </b> <br/>
+
 <b> 시연 영상 </b><br/>
 https://youtu.be/-UsameyX4Ls
 <br/>
-<br/>
-<b> 접속 링크 </b> <br/>
+
 
 <b> 접속 링크 </b><br/>
 http://code10.shop.s3-website.ap-northeast-2.amazonaws.com/
