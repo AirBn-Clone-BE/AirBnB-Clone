@@ -10,7 +10,7 @@ Backend  - https://github.com/AirBn-Clone-BE/AirBnB-Clone
 
 # 서버 배포
 
--
+- http://code10.shop.s3-website.ap-northeast-2.amazonaws.com/
 
 ## 팀원
 
