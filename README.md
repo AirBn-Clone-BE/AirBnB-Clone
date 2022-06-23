@@ -36,14 +36,14 @@ BackEnd
 접속 링크
 
 ## Frontend Tech Spec
--React<br/>
--Redux<br/>
--Axios<br/>
--kakao map API<br/>
--react-daum-postcode<br/>
--Firebase Storage<br/>
--Styled-Components<br/>
--Tool : Git, Notion, Figma
+- React<br/>
+- Redux<br/>
+- Axios<br/>
+- kakao map API<br/>
+- react-daum-postcode<br/>
+- Firebase Storage<br/>
+- Styled-Components<br/>
+- Tool : Git, Notion, Figma
 
 
 ## Backend Tech Spec
