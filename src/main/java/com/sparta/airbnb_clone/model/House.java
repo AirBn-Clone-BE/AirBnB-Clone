@@ -32,7 +32,7 @@ public class House {
     @Column(nullable = false)
     private String address;
 
-    @Column
+    @Column(length = 8000)
     private String image;
 
     @Column(nullable = false)
@@ -56,7 +56,7 @@ public class House {
         this.nickName = nickName;
         this.personCnt = requestDto.getPersonCnt();
         this.wifi  = requestDto.isWifi();
-        this.parking = isParking();
+        this.parking = requestDto.isParking();
     }
 
 

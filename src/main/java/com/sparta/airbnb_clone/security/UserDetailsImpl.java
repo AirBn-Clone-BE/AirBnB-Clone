@@ -4,6 +4,7 @@ package com.sparta.airbnb_clone.security;
 import com.sparta.airbnb_clone.model.UserRoleEnum;
 import com.sparta.airbnb_clone.model.Users;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,8 +34,8 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override //숙소 등록 및 댓글작성 시 SecurityUtil.getCurrentUserId();으로 nickName 값 꺼내오기 위해 변경
     public String getUsername() {return user.getNickName();}
-
-    public String getNickName() { return user.getNickName();}
+//
+//    public String getNickName() { return user.getNickName();}
 
     @Override
     public boolean isAccountNonExpired() {

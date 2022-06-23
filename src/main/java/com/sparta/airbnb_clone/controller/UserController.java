@@ -1,10 +1,9 @@
 package com.sparta.airbnb_clone.controller;
 
-import com.sparta.airbnb_clone.dto.MyDto;
-import com.sparta.airbnb_clone.dto.TokenDto;
-import com.sparta.airbnb_clone.dto.TokenRequestDto;
-import com.sparta.airbnb_clone.dto.UsersRequestDto;
+import com.sparta.airbnb_clone.dto.*;
 import com.sparta.airbnb_clone.exception.StatusEnum;
+import com.sparta.airbnb_clone.model.RefreshToken;
+import com.sparta.airbnb_clone.repository.RefreshTokenRepository;
 import com.sparta.airbnb_clone.repository.UserRepository;
 import com.sparta.airbnb_clone.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -12,11 +11,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.Charset;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,6 +26,8 @@ public class UserController {
     private final UserService userService;
 
     private final UserRepository userRepository;
+
+    private final RefreshTokenRepository refreshTokenRepository;
 
 
 
@@ -34,8 +38,8 @@ public class UserController {
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
+        /*Id, nickName 유효성검사*/
         if (userRepository.existsByUserId(requestDto.getUserId())) {
-//            throw new RuntimeException("이미 가입되어 있는 유저입니다");
             dto.setStatus(StatusEnum.BAD_REQUEST);
             dto.setData("");
             dto.setMessage("이미 가입되어 있는 userId가 존재합니다.");
@@ -57,14 +61,37 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody UsersRequestDto requestDto) {
-        TokenDto dto = new TokenDto();
+
+            return ResponseEntity.ok(userService.login(requestDto));
+
+
+    }
+
+    @PostMapping("/user/logout")
+    public ResponseEntity<MyDto> logout(@RequestBody LogoutDto requestDto) {
+
+        Optional<RefreshToken> find = refreshTokenRepository.findRefreshTokenByValue(requestDto.getRefreshToken());
+        Long id = find.get().getId();
+
+
+        MyDto dto = new MyDto();
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
-//        if (userRepository.existsByUserId(requestDto))
-
-
-        return ResponseEntity.ok(userService.login(requestDto));
+        /*refreshToken 대조후 맞으면 삭제*/
+        if (refreshTokenRepository.existsByValue(requestDto.getRefreshToken())) {
+            dto.setStatus(StatusEnum.OK);
+            dto.setData("");
+            dto.setMessage("로그아웃 완료!");
+            refreshTokenRepository.deleteById(id);
+            return new ResponseEntity<>(dto, header, HttpStatus.BAD_REQUEST);
+        } else {
+//            throw new RuntimeException("해당하는 refreshToken이 없습니다.");
+            dto.setStatus(StatusEnum.BAD_REQUEST);
+            dto.setData("");
+            dto.setMessage("유효하지 않는 아이디 입니다 다시 확인 바랍니다.");
+            return new ResponseEntity<>(dto, header, HttpStatus.BAD_REQUEST);
+        }
     }
 
 

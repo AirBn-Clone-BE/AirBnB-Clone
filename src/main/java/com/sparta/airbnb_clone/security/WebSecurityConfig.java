@@ -75,9 +75,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .antMatchers("/signup/**").permitAll()
                 .antMatchers("/login/**").permitAll()
+                .antMatchers("/user/logout").permitAll()
                 .antMatchers("/reissue/**").permitAll()
                 .antMatchers("/auth/**", "/oauth2/**").permitAll()
                 .antMatchers("/user/**").permitAll()
+                .antMatchers("/api/comment/**").hasRole("USER") //댓글 등록은 UserRole이 있는 사람만 가능
+                .antMatchers("/api/house").hasRole("USER") //숙소 등록은 UserRole이 있는 사람만 가능
                 .antMatchers("/api/**").permitAll()
                 .antMatchers("/oauth/**").permitAll()
 //                .antMatchers("/").permitAll()
@@ -104,7 +107,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.addAllowedHeader("*");
         configuration.addExposedHeader("Authorization");
 //        configuration.addExposedHeader("refreshToken");
-        configuration.addAllowedOriginPattern("http://localhost:3000"); // local 테스트 시
+//        configuration.addAllowedOriginPattern("http://localhost:3000"); // local 테스트 시
+        configuration.addAllowedOriginPattern("http://code10.shop.s3-website.ap-northeast-2.amazonaws.com"); // 프론트 배포 시
 //        configuration.addAllowedOriginPattern("http://doridori.shop"); // 배포 전 모두 허용
         configuration.setAllowCredentials(true);
 

@@ -1,13 +1,11 @@
 package com.sparta.airbnb_clone.model;
 
+import com.sparta.airbnb_clone.dto.LogoutDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor
@@ -16,6 +14,8 @@ import javax.persistence.Table;
 public class RefreshToken {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(name = "rt_key")
     private String key;
 
@@ -32,4 +32,9 @@ public class RefreshToken {
         this.value = token;
         return this;
     }
+
+    public RefreshToken(String value) {
+        this.value = value;
+    }
+
 }

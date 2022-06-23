@@ -1,12 +1,8 @@
 package com.sparta.airbnb_clone.controller;
 
 import com.sparta.airbnb_clone.dto.HouseRequestDto;
-import com.sparta.airbnb_clone.dto.HouseResponseDto;
 import com.sparta.airbnb_clone.dto.MyDto;
-import com.sparta.airbnb_clone.dto.ResponseDto;
-import com.sparta.airbnb_clone.exception.CustomErrorException;
 import com.sparta.airbnb_clone.exception.StatusEnum;
-import com.sparta.airbnb_clone.model.Comment;
 import com.sparta.airbnb_clone.model.House;
 import com.sparta.airbnb_clone.repository.HouseRepository;
 import com.sparta.airbnb_clone.security.SecurityUtil;
@@ -16,10 +12,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.Charset;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;

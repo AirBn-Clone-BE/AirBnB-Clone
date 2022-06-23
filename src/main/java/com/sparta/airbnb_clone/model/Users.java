@@ -1,6 +1,8 @@
 package com.sparta.airbnb_clone.model;
 
+import com.sparta.airbnb_clone.dto.UsersRequestDto;
 import com.sparta.airbnb_clone.util.Timestamped;
+import com.sparta.airbnb_clone.validator.UserValidator;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +34,7 @@ public class Users extends Timestamped {
 
     @Column
     private String provider;
+
 
 
     public Users(String userId, String nickName, String password, UserRoleEnum role) {

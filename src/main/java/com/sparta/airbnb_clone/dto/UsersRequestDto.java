@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Getter
 @NoArgsConstructor
 public class UsersRequestDto {
+
     private String userId;
     private String nickName;
     private String password;
