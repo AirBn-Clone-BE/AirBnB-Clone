@@ -53,6 +53,7 @@ BackEnd
 - MySQL<br/>
 - AWS<br/>
 - JWt
+- Spring Security<br/>
 
 ## 주요 기능
 
