@@ -101,7 +101,7 @@ if문을 통해 둘이 같다면 작업이 가능하고 아니라면 BAD_REQUEST
 권도훈:<br/>
 1. 본인이 작성한 댓글에 한에서만 삭제, 수정 가능(토큰 활용 Authentication에서 Name에 해당되는 값을 가져옴)<br/><br/>
 2. Timestamped 사용시 실행파일에 @EnableJpaAuditing 어노테이션 추가<br/><br/>
-3.수정할 목록 불러올때 뒤에 orElseThrow 붙혀주기<br/>
+3. 수정할 목록 불러올때 뒤에 orElseThrow 붙혀주기<br/>
 
 
 박건영: <br/>
