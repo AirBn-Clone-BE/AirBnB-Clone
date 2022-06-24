@@ -101,6 +101,11 @@ if문을 통해 둘이 같다면 작업이 가능하고 아니라면 BAD_REQUEST
 프론트에서 보내주는 True, False 값 저장하는 방법 몰랐음<br/>
 >boolean으로 받아서 저장하고 가지고 올 때에도 다른 스트링 값과는 다르게 get이 아닌 is사용<this.wifi  = requestDto.isWifi();><br/>
 
+권도훈:<br/>
+본인이 작성한 댓글에 한에서만 삭제, 수정 가능(토큰 활용 Authentication에서 Name에 해당되는 값을 가져옴)<br/>
+            2. Timestamped 사용시 실행파일에 @EnableJpaAuditing 어노테이션 추가<br/>
+            3.수정할 목록 불러올때 뒤에 orElseThrow 붙혀주기<br/><br/>
+
 박건영: <br/>
 1. jwt와 스프링 시큐리티를 함께 이용하여 시큐리티에서 요청 설정 부분에 댓글 작성 API (/api/comment/{houseId})를 User권한을 가진(로그인한사용자)만 가능하게 설정을 해두었었는데,
 댓글작성과 댓글 조회 api가 동일하여 배포후 테스트에서 댓글 조회가 로그인한 유저만 보이는 에러를 발견하였고, API 명세를 수정하여 댓글 조회 API를 /api/allcomment/{houseId} 로 변경하여
