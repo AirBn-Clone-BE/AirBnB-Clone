@@ -88,7 +88,7 @@ http://code10.shop.s3-website.ap-northeast-2.amazonaws.com/
 
 ## Trouble Shooting
 
-진용희:<br/>
+진용희:<br/><br/>
 api설계한 것과 맞추지 않아서 프론트엔드분들과 작업을 하거나 다른분들께 검사를 받을 때 수정을 했음.<br/><br/>
 
 수정 및 삭제를 할 때 작성자만 가능하게 하기<br/>
