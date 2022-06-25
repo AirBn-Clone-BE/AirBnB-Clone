@@ -107,7 +107,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.addAllowedHeader("*");
         configuration.addExposedHeader("Authorization");
 //        configuration.addExposedHeader("refreshToken");
-//        configuration.addAllowedOriginPattern("http://localhost:3000"); // local 테스트 시
+        configuration.addAllowedOriginPattern("http://localhost:3000"); // local 테스트 시
         configuration.addAllowedOriginPattern("http://code10.shop.s3-website.ap-northeast-2.amazonaws.com"); // 프론트 배포 시
 //        configuration.addAllowedOriginPattern("http://doridori.shop"); // 배포 전 모두 허용
         configuration.setAllowCredentials(true);

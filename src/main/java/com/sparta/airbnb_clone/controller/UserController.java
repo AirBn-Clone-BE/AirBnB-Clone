@@ -67,7 +67,7 @@ public class UserController {
 
     }
 
-    @PostMapping("/user/logout")
+    @GetMapping("/user/logout")
     public ResponseEntity<MyDto> logout(@RequestBody LogoutDto requestDto) {
 
         Optional<RefreshToken> find = refreshTokenRepository.findRefreshTokenByValue(requestDto.getRefreshToken());
@@ -86,7 +86,6 @@ public class UserController {
             refreshTokenRepository.deleteById(id);
             return new ResponseEntity<>(dto, header, HttpStatus.BAD_REQUEST);
         } else {
-//            throw new RuntimeException("해당하는 refreshToken이 없습니다.");
             dto.setStatus(StatusEnum.BAD_REQUEST);
             dto.setData("");
             dto.setMessage("유효하지 않는 아이디 입니다 다시 확인 바랍니다.");
